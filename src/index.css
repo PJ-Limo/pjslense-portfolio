@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Nothing+You+Could+Do&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base styles ── */
+body {
+  @apply font-inter bg-charcoal text-snow;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Partners marquee scroll animation ── */
+/* Kept exactly from your original — this powers the Partners section */
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-70%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+  display: flex;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.scroll-wrapper:hover .animate-scroll {
+  animation-play-state: paused;
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* ── Partners logo scroll ── */
+@keyframes logoScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* 
+      -50% works because we render the logo array exactly twice.
+      Total width = 2 sets. Moving -50% shifts exactly one full set
+      off screen, at which point the animation resets and the second
+      set is in the same position the first started — seamless loop.
+    */
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-logos {
+  animation: logoScroll 40s linear infinite;
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+}
+
+.scroll-wrapper:hover .animate-scroll-logos {
+  animation-play-state: paused;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+}
