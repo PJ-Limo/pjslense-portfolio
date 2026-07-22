@@ -2,20 +2,20 @@ import PortfolioLayout from './PortfolioLayout'
 
 const projects = [
   {
-    title: 'Impact Reel 2024',
+    title: 'Church and Community transformation (CCT) Documentary',
     client: 'Tearfund',
-    year: '2024',
-    summary: 'Annual impact documentary showcasing Tearfund\'s programme outcomes across East Africa — shot, directed and edited in-house.',
-    cover: '/pj.png',
-    link: 'https://youtube.com',
+    year: '2025',
+    summary: 'Two short documentaries set in Alale, West Pokot, this documentary seeks to capture the impact on the local community as they implement CCMP practices. The project was a collaboration between Tearfund and Farming Systems Kenya, with the aim of showcasing the positive changes brought about by the project on the request of the doner.',
+    cover: '/videoThumbnail.png',
+    link: 'https://youtu.be/03ux3CzOrPA',
   },
   {
-    title: 'West Pokot Documentary',
-    client: 'Farming Systems Kenya',
-    year: '2023',
-    summary: 'Two short documentaries produced for donor reporting — covering food security and community resilience programmes in Alale.',
-    cover: '/pj.png',
-    link: 'https://youtube.com',
+    title: 'Africa Evangelical Alliance (AEA) conference',
+    client: 'ACT forum',
+    year: '2025',
+    summary: 'Held in Nairobi, Kenya, the AEA conference brought together church leaders and representatives from across Africa to track the progress of initiatives set in motion by the organisation. Our team was tasked with capturing the event, and telling the story from the lens of the ACT forum a member of the AEA. We sough high impact interviews and asked hard hitting questions to dig deeper into the heart of the story. ',
+    cover: '/AbundantAfrica.png',
+    link: 'https://youtu.be/u821fu5OyaI',
   },
   {
     title: 'Festival Coverage Film',
