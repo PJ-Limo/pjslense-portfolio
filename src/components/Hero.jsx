@@ -39,8 +39,8 @@ export default function Hero() {
 
             <p className="font-inter text-sm text-muted leading-relaxed mb-10 max-w-lg">
               I've had the privilege of working with organisations across East
-              Africa and beyond—from grassroots NGOs to international
-              institutions—helping them communicate their impact with clarity,
+              Africa and beyond - from grassroots NGOs to international
+              institutions - helping them communicate their impact with clarity,
               creativity and dignity. My work sits at the intersection of art
               and advocacy, always in service of the story that needs to be
               told.
