@@ -53,102 +53,103 @@ const projects = [
   },
 ]
 
+function FeaturedCard({ project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      className="group block mb-16"
+    >
+      {/* Hero image */}
+      <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] mb-6">
+        <img
+          src={project.cover}
+          alt={project.title}
+          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-base/80 via-base/20 to-transparent" />
+
+        {/* Featured badge */}
+        <div className="absolute top-5 left-5 font-inter text-[10px] tracking-[0.15em] text-amber uppercase border border-amber/40 bg-base/60 backdrop-blur-sm rounded-full px-3 py-1">
+          Featured
+        </div>
+
+        {/* Title overlay on image */}
+        <div className="absolute bottom-6 left-6 right-6">
+          <p className="font-inter text-xs text-amber tracking-widest uppercase mb-2">
+            {project.client} · {project.year}
+          </p>
+          <h2 className="font-playfair text-3xl md:text-4xl text-snow font-bold leading-tight group-hover:text-amber transition-colors duration-300">
+            {project.title}
+          </h2>
+        </div>
+      </div>
+
+      {/* Summary + CTA below image */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-1">
+        <p className="font-inter text-sm text-muted leading-relaxed max-w-xl">
+          {project.summary}
+        </p>
+        <div className="flex-shrink-0 inline-flex items-center gap-2 font-inter text-xs font-medium text-amber border border-border rounded-full px-4 py-2 group-hover:border-amber/50 transition-all duration-300 whitespace-nowrap">
+          <span>View case study</span>
+          <span className="group-hover:translate-x-0.5 transition-transform duration-300">→</span>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
+function ProjectCard({ project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      className="group block bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-amber/30 hover:bg-white/[0.07] transition-all duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
+    >
+      <div className="aspect-[4/3] overflow-hidden">
+        <img
+          src={project.cover}
+          alt={project.title}
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      <div className="p-5 border-t border-white/5">
+        <p className="font-inter text-[10px] text-amber tracking-widest uppercase mb-1.5">
+          {project.client} · {project.year}
+        </p>
+        <h3 className="font-playfair text-lg text-snow font-bold mb-2 leading-snug group-hover:text-amber transition-colors duration-300">
+          {project.title}
+        </h3>
+        <p className="font-inter text-xs text-muted leading-relaxed mb-5">
+          {project.summary}
+        </p>
+        <div className="inline-flex items-center gap-1.5 font-inter text-xs font-medium text-amber border border-border rounded-full px-3.5 py-1.5 group-hover:border-amber/50 transition-all duration-300">
+          <span>View case study</span>
+          <span className="group-hover:translate-x-0.5 transition-transform duration-300">→</span>
+        </div>
+      </div>
+    </Link>
+  )
+}
+
 export default function Design() {
   return (
-    <PortfolioLayout>
-
-      {/* Page header */}
-      <div className="mb-16 max-w-xl">
-        <p className="font-inter text-xs font-medium tracking-[0.2em] text-amber uppercase mb-3">
-          Discipline
-        </p>
-        <h1 className="font-playfair text-5xl md:text-6xl text-snow font-bold mb-4">
-          Graphic Design
-        </h1>
-        <p className="font-inter text-sm text-muted leading-relaxed">
-          Brand identity, campaign visuals and print design across NGO,
-          corporate and creative sectors.
-        </p>
-      </div>
-
-      {/* Featured project — full width hero */}
-      <Link
-        to={`/projects/${featured.slug}`}
-        className="group block mb-20"
-      >
-        <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-border mb-6">
-          <img
-            src={featured.cover}
-            alt={featured.title}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-          />
-          {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-base/80 to-transparent" />
-          {/* Featured label */}
-          <div className="absolute top-5 left-5 font-inter text-xs tracking-widest text-amber uppercase border border-amber/40 rounded-full px-3 py-1">
-            Featured
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div>
-            <p className="font-inter text-xs text-amber tracking-widest uppercase mb-2">
-              {featured.client} · {featured.year}
-            </p>
-            <h2 className="font-playfair text-3xl md:text-4xl text-snow font-bold group-hover:text-amber transition-colors duration-300">
-              {featured.title}
-            </h2>
-            <p className="font-inter text-sm text-muted mt-3 max-w-lg leading-relaxed">
-              {featured.summary}
-            </p>
-          </div>
-          <div className="flex-shrink-0 font-inter text-sm text-muted group-hover:text-amber transition-colors duration-300 flex items-center gap-2">
-            <span>View case study</span>
-            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-          </div>
-        </div>
-      </Link>
+    <PortfolioLayout
+      title="Graphic Design"
+      description="Brand identity, campaign visuals and print design across NGO, corporate and creative sectors."
+    >
+      <FeaturedCard project={featured} />
 
       {/* Divider */}
-      <div className="flex items-center gap-4 mb-12">
+      <div className="flex items-center gap-4 mb-10">
         <div className="h-px flex-grow bg-border" />
-        <p className="font-inter text-xs text-faint tracking-widest uppercase">More work</p>
+        <p className="font-inter text-[10px] text-faint tracking-[0.2em] uppercase">More work</p>
         <div className="h-px flex-grow bg-border" />
       </div>
 
-      {/* 5-card grid — 3 top, 2 bottom centered */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, i) => (
-          <Link
-            key={i}
-            to={`/projects/${project.slug}`}
-            className="group block border border-border rounded-xl overflow-hidden hover:border-amber/50 transition-all duration-300"
-          >
-            <div className="aspect-[4/3] overflow-hidden">
-              <img
-                src={project.cover}
-                alt={project.title}
-                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-              />
-            </div>
-            <div className="p-5">
-              <p className="font-inter text-xs text-amber tracking-widest uppercase mb-1">
-                {project.client} · {project.year}
-              </p>
-              <h3 className="font-playfair text-lg text-snow font-bold mb-2 group-hover:text-amber transition-colors duration-300">
-                {project.title}
-              </h3>
-              <p className="font-inter text-xs text-muted leading-relaxed mb-4">
-                {project.summary}
-              </p>
-              <div className="flex items-center gap-2 text-xs text-muted group-hover:text-amber transition-colors duration-300">
-                <span>View case study</span>
-                <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </div>
-            </div>
-          </Link>
+          <ProjectCard key={i} project={project} />
         ))}
       </div>
-
     </PortfolioLayout>
   )
 }
