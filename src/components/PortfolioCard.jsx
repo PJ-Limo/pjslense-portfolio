@@ -22,7 +22,7 @@ export default function PortfolioCard({
         className=" absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 "
       />
       {/* Bottom gradient */}
-      <div className=" absolute inset-0 bg-gradient-to-t from-base from-[8%] via-base/70 via-20% to-transparent to-[38%] " />
+      <div className=" absolute inset-0 bg-gradient-to-t from-charcoal from-[8%] via-base/70 via-20% to-transparent to-[38%] " />
 
       {/* Amber Accent Line */}
       <div className=" absolute bottom-0 left-0 h-1 w-0 bg-amber transition-all duration-500 group-hover:w-full z-20 " />

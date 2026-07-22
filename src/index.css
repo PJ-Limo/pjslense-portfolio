@@ -21,8 +21,7 @@ body {
   box-sizing: border-box;
 }
 
-/* ── Partners marquee scroll animation ── */
-/* Kept exactly from your original — this powers the Partners section */
+
 @keyframes scroll {
   0% {
     transform: translateX(0%);
@@ -53,12 +52,6 @@ body {
     transform: translateX(0);
   }
   100% {
-    /* 
-      -50% works because we render the logo array exactly twice.
-      Total width = 2 sets. Moving -50% shifts exactly one full set
-      off screen, at which point the animation resets and the second
-      set is in the same position the first started — seamless loop.
-    */
     transform: translateX(-50%);
   }
 }

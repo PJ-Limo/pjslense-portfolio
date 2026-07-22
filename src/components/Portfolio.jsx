@@ -5,7 +5,7 @@ export default function Portfolio() {
     {
       title: "Graphic Design",
       description: "Brand identity & publications",
-      image: "/TF CCT design.jpg",
+      image: "/public/SATG.png",
       link: "/design",
       className: "col-span-1 row-span-2",
     },

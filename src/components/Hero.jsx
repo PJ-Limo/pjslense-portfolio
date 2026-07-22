@@ -1,8 +1,8 @@
 export default function Hero() {
   const stats = [
-    { value: "7+", label: "Years of experience" },
+    { value: "10+", label: "Years of experience" },
     { value: "30+", label: "Clients served" },
-    { value: "3", label: "Disciplines" },
+    { value: "4", label: "Disciplines" },
     { value: "10+", label: "Countries reached" },
   ];
 
