@@ -76,10 +76,10 @@ const testimonials = [
   },
   {
     quote:
-      "Beyond technical excellence, Joseph genuinely cares about the people behind every story.",
-    name: "David Mwangi",
-    title: "Brand Lead",
-    company: "Creative Collective",
+      "Joseph Limo has worked with our team as a consultant creative designer for over five years, contributing to a broad scope of work including the design of posters, fliers, videos, animations and reports for our organization. His work consistently demonstrates creativity and professionalism across every assignment. He possesses a strong technical command of a wide range of design tools, coupled with a research-driven approach to concept development that he skillfully adapts to our needs, reflecting his strong strategic thinking capabilities. Joseph’s collaborative approach in working with a diverse team and his clear communication of design rationale, makes him a pleasure to work with, allowing seamless incorporation of feedback, and consistently accelerating turnaround times in meeting deadlines. He further demonstrates notable composure under pressure, reprioritizing work efficiently and delivering high-quality results as scopes shift. It is a pleasure to recommend Joseph Limo, he will be an excellent addition to your team.",
+    name: "Charlene Denousse",
+    title: "Chief of Coaching",
+    company: "Inuka Africa",
   },
   {
     quote:
