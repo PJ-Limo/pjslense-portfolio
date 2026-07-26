@@ -10,6 +10,12 @@ export default function PortfolioCard({
   return (
     <Link
       to={link}
+      onClick={() =>
+        window.scrollTo({
+          top: 0,
+          behavior: "instant",
+        })
+      }
       className={`
         group relative h-full overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
         ${className}

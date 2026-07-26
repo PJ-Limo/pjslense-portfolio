@@ -6,7 +6,7 @@ export default function Portfolio() {
       title: "Graphic Design",
       description: "Brand identity & publications",
       image: "/public/SATG.png",
-      link: "/design",
+      link: "/portfolio/design",
       className: "col-span-1 row-span-2",
     },
 
@@ -14,7 +14,7 @@ export default function Portfolio() {
       title: "Photography",
       description: "Portraits & documentary",
       image: "/Turkana 1.jpg",
-      link: "/photography",
+      link: "/portfolio/photography",
       className: "col-span-1 row-span-1",
     },
 
@@ -22,7 +22,7 @@ export default function Portfolio() {
       title: "Videography",
       description: "Films & storytelling",
       image: "/videoThumbnail.png",
-      link: "/videography",
+      link: "/portfolio/video",
       className: "col-span-1 row-span-1",
     },
 
@@ -30,7 +30,7 @@ export default function Portfolio() {
       title: "Communications",
       description: "Campaigns & advocacy",
       image: "/TF CCT design.jpg",
-      link: "/communications",
+      link: "/portfolio/stories",
       className: "col-span-1 row-span-2",
     },
   ];
