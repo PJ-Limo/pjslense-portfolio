@@ -1,123 +1,123 @@
-import { Link } from 'react-router-dom'
-import PortfolioLayout from './PortfolioLayout'
+import { Link } from "react-router-dom";
+import {
+  EditorialAction,
+  EditorialMeta,
+  EditorialRule,
+} from "../components/Editorial";
+import { storyProjects } from "../data/projects";
+import PortfolioLayout, { PortfolioNav } from "./PortfolioLayout";
 
-const projects = [
-  {
-    title: 'Voices from Turkana',
-    client: 'Tearfund',
-    year: '2023',
-    summary: 'A long-form visual narrative combining photography, film and written testimony from communities living on the frontlines of climate change in northern Kenya.',
-    cover: '/Turkana 1.jpg',
-    slug: 'voices-from-turkana',
-    tag: 'Documentary',
-  },
-  {
-    title: 'Youth in Motion',
-    client: 'Inuka Africa',
-    year: '2022',
-    summary: 'A multimedia story following young people through Inuka\'s empowerment programmes — portraits, interviews and moments of transformation.',
-    cover: '/pj.png',
-    slug: 'youth-in-motion',
-    tag: 'Multimedia',
-  },
-  {
-    title: 'The Plastic Tide',
-    client: 'Tearfund',
-    year: '2023',
-    summary: 'An advocacy story combining data visualisation, photography and community voices to make the case for systemic change on plastic pollution.',
-    cover: '/TF CCT design.jpg',
-    slug: 'the-plastic-tide',
-    tag: 'Advocacy',
-  },
-  {
-    title: 'Roots & Routes',
-    client: 'Personal Project',
-    year: '2024',
-    summary: 'A personal documentary project exploring identity, place and belonging through portraits and landscapes across Kenya.',
-    cover: '/pj.png',
-    slug: 'roots-and-routes',
-    tag: 'Personal',
-  },
-  {
-    title: 'Building Tomorrow',
-    client: 'Farming Systems Kenya',
-    year: '2023',
-    summary: 'A donor impact story told through the eyes of smallholder farmers in West Pokot — combining field photography with programme narrative.',
-    cover: '/pj.png',
-    slug: 'building-tomorrow',
-    tag: 'Impact',
-  },
-  {
-    title: 'The Festival Diaries',
-    client: 'Ubumuntu Arts Festival',
-    year: '2022',
-    summary: 'Behind-the-scenes documentary storytelling from East Africa\'s leading international arts gathering.',
-    cover: '/pj.png',
-    slug: 'festival-diaries',
-    tag: 'Documentary',
-  },
-]
-
-function StoryCard({ project, reverse }) {
+function StoryAction({ project }) {
   return (
-    <div className={`flex flex-col md:flex-row items-center gap-10 md:gap-16 ${reverse ? 'md:flex-row-reverse' : ''}`}>
+    <EditorialAction
+      to={`/projects/${project.slug}`}
+      className="mt-8"
+    >
+      Read the story
+    </EditorialAction>
+  );
+}
 
-      {/* Image */}
-      <div className="w-full md:w-[45%] flex-shrink-0">
-        <Link
-          to={`/projects/${project.slug}`}
-          className="group/img block relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
-        >
-          <img
-            src={project.cover}
-            alt={project.title}
-            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover/img:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-base/60 to-transparent" />
-
-          {/* Story tag */}
-          <div className="absolute top-4 left-4 font-inter text-[10px] tracking-[0.15em] text-amber uppercase border border-amber/30 bg-base/60 backdrop-blur-sm rounded-full px-2.5 py-1">
-            {project.tag}
-          </div>
-        </Link>
-      </div>
-
-      {/* Text */}
-      <div className="w-full md:w-[55%]">
-        <p className="font-inter text-xs text-amber tracking-widest uppercase mb-3">
-          {project.client} · {project.year}
-        </p>
-        <h2 className="font-playfair text-3xl md:text-4xl text-snow font-bold mb-4 leading-tight">
-          {project.title}
-        </h2>
-        <div className="h-px w-12 bg-amber mb-5" />
-        <p className="font-inter text-sm text-muted leading-relaxed mb-8">
-          {project.summary}
-        </p>
-        <Link
-          to={`/projects/${project.slug}`}
-          className="inline-flex items-center gap-2 font-inter text-xs font-medium text-amber border border-border rounded-full px-4 py-2 hover:border-amber/50 transition-all duration-300"
-        >
-          <span>Read the story</span>
-          <span>→</span>
-        </Link>
-      </div>
-
+function StoryCopy({ project, featured = false, headingId }) {
+  return (
+    <div>
+      <EditorialMeta>
+        {project.client} · {project.year}
+      </EditorialMeta>
+      <h2
+        id={headingId}
+        className={`font-playfair font-bold leading-[0.98] text-snow ${
+          featured
+            ? "mt-5 text-5xl sm:text-6xl lg:text-[clamp(4.8rem,6vw,6rem)]"
+            : "mt-3 text-4xl sm:text-5xl lg:text-5xl"
+        }`}
+      >
+        {project.title}
+      </h2>
+      <EditorialRule className={featured ? "my-7" : "my-6"} />
+      <p className="max-w-[440px] font-inter text-sm leading-7 text-muted sm:text-base">
+        {project.summary}
+      </p>
+      <StoryAction project={project} />
     </div>
-  )
+  );
 }
 
 export default function Stories() {
+  const [featuredStory, secondStory] = storyProjects;
+
   return (
     <PortfolioLayout
-      title="Stories"
-      description="Long-form visual narratives where photography, film and design come together to tell stories that matter."
+      title="Visual Stories"
+      description="Documentary and advocacy narratives grounded in people, place and lived experience."
+      variant="immersive"
     >
-      <div className="flex flex-col gap-20">
-        {projects.map((project, i) => (
-          <StoryCard key={i} project={project} reverse={i % 2 !== 0} />
-        ))}
-      </div>
+      <h1 className="sr-only">Visual Stories</h1>
+      <section
+        aria-labelledby="featured-story-title"
+        className="relative border-b border-white/15"
+      >
+        <div className="absolute inset-x-0 top-4 z-20 px-5 sm:px-8 lg:top-5 lg:px-12">
+          <PortfolioNav activeFirst overlay />
+        </div>
+
+        <article className="flex flex-col pt-[76px] lg:grid lg:min-h-[625px] lg:grid-cols-[60%_40%] lg:pt-0">
+          <Link
+            to={`/projects/${featuredStory.slug}`}
+            aria-label={`Read ${featuredStory.title}`}
+            className="group relative block min-h-[360px] overflow-hidden sm:min-h-[460px] lg:min-h-0"
+          >
+            <img
+              src={featuredStory.cover}
+              alt=""
+              width="1400"
+              height="933"
+              fetchPriority="high"
+              className="absolute inset-0 h-full w-full object-cover object-center brightness-[0.9] saturate-[0.95] transition-transform duration-1000 group-hover:scale-[1.015]"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-charcoal/45 via-transparent to-charcoal/55 lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-charcoal"
+              aria-hidden="true"
+            />
+          </Link>
+
+          <div className="relative flex items-center bg-charcoal px-6 py-12 sm:px-10 lg:-ml-px lg:px-8 lg:py-24 xl:px-9">
+            <div className="lg:translate-y-6">
+              <StoryCopy
+                project={featuredStory}
+                featured
+                headingId="featured-story-title"
+              />
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <article className="grid border-b border-white/15 lg:min-h-[390px] lg:grid-cols-[36.7%_63.3%]">
+        <div className="order-2 flex items-center border-white/15 px-6 py-12 sm:px-10 lg:order-1 lg:items-start lg:border-r lg:px-14 lg:py-10">
+          <StoryCopy project={secondStory} />
+        </div>
+
+        <Link
+          to={`/projects/${secondStory.slug}`}
+          aria-label={`Read ${secondStory.title}`}
+          className="group relative order-1 block min-h-[310px] overflow-hidden lg:order-2 lg:my-8 lg:ml-6 lg:min-h-0"
+        >
+          <img
+            src={secondStory.cover}
+            alt=""
+            width="1400"
+            height="933"
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover object-center brightness-[0.9] saturate-[0.95] transition-transform duration-1000 group-hover:scale-[1.015]"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-charcoal/15 to-transparent"
+            aria-hidden="true"
+          />
+        </Link>
+      </article>
     </PortfolioLayout>
-  )
+  );
 }

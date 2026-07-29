@@ -7,29 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm darks — your original greys, now properly named
-        // These are the backbone of the dark theme
-        'charcoal':    '#1C1B1A',   // page background — warm dark, not cold black
-        'surface': '#242321',   // cards, navbar — slightly lighter than base
-        'surface2': '#2E2D2B',  // hover states, subtle elevation
-        'border':  '#3A3937',   // your grey2 — dividers, input borders
-
-        // Your original amber — richer and more golden than what I had
-        'amber':       '#FFBF00',
-        'amber-light': '#FFEEDA',
-        'amber-dim':   '#A67C00', // darker amber for hover states on light surfaces
-
-        // Text
-        'snow':  '#F0EDE8',  // primary text — warm white, not pure white
-        'muted': '#8C8A86',  // secondary text — warm gray
-        'faint': '#5C5A57',  // disabled, placeholder text
+        charcoal: "#1C1B1A",
+        surface: "#242321",
+        surface2: "#2E2D2B",
+        border: "#3A3937",
+        amber: "#FFBF00",
+        "amber-light": "#FFEEDA",
+        "amber-dim": "#A67C00",
+        snow: "#F0EDE8",
+        muted: "#A8A49D",
+        faint: "#A8A49D",
       },
       fontFamily: {
-        'playfair': ['"Playfair Display"', 'serif'],
-        'inter':    ['Inter', 'sans-serif'],
-        'jakarta':  ['"Plus Jakarta Sans"', 'sans-serif'],
-        handwritten: ['Nothing You Could Do', 'cursive'],
-        'cormorant':   ['"Cormorant Garamond"', 'serif'],
+        playfair: ['"Playfair Display"', "serif"],
+        inter: ["Inter", "sans-serif"],
       },
     },
   },

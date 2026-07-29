@@ -1,155 +1,121 @@
-import { Link } from 'react-router-dom'
-import PortfolioLayout from './PortfolioLayout'
+import { Link } from "react-router-dom";
+import {
+  EditorialAction,
+  EditorialMeta,
+  EditorialRule,
+} from "../components/Editorial";
+import { designProjects } from "../data/projects";
+import PortfolioLayout from "./PortfolioLayout";
 
-const featured = {
-  title: 'Plastics Campaign',
-  client: 'Tearfund',
-  year: '2023',
-  summary: 'A full campaign visual identity for Tearfund\'s plastics advocacy work — spanning print, digital and social media across multiple markets.',
-  cover: '/TF CCT design.jpg',
-  slug: 'tearfund-plastics-campaign',
-}
-
-const projects = [
-  {
-    title: 'Brand Identity',
-    client: 'Inuka Africa',
-    year: '2022',
-    summary: 'End-to-end brand identity design including logo, colour system, typography and brand guidelines.',
-    cover: '/pj.png',
-    slug: 'inuka-brand-identity',
-  },
-  {
-    title: 'Event Collateral',
-    client: 'AMCHAM Kenya',
-    year: '2023',
-    summary: 'Print and digital design for annual business forum — programmes, banners, social assets and signage.',
-    cover: '/pj.png',
-    slug: 'amcham-event-collateral',
-  },
-  {
-    title: 'Brand Refresh',
-    client: 'Rosslyn Riviera',
-    year: '2021',
-    summary: 'Visual identity refresh for a leading Nairobi hospitality venue — logo evolution, menus and marketing materials.',
-    cover: '/pj.png',
-    slug: 'rosslyn-brand-refresh',
-  },
-  {
-    title: 'Campaign Design',
-    client: 'Good Kenyan Foundation',
-    year: '2022',
-    summary: 'Social media campaign visuals and print materials for youth empowerment initiatives.',
-    cover: '/pj.png',
-    slug: 'goodkenyan-campaign',
-  },
-  {
-    title: 'Communications Kit',
-    client: 'African Union',
-    year: '2023',
-    summary: 'Design of communications materials including reports, presentations and digital assets.',
-    cover: '/pj.png',
-    slug: 'african-union-comms',
-  },
-]
-
-function FeaturedCard({ project }) {
+function FeaturedProject({ project }) {
   return (
-    <Link
-      to={`/projects/${project.slug}`}
-      className="group block mb-16"
-    >
-      {/* Hero image */}
-      <div className="relative aspect-[16/7] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] mb-6">
+    <article className="grid border-y border-white/15 lg:min-h-[490px] lg:grid-cols-[60%_40%]">
+      <Link
+        to={`/projects/${project.slug}`}
+        aria-label={`View ${project.title}`}
+        className="group block aspect-[16/11] overflow-hidden bg-surface lg:aspect-auto lg:min-h-0"
+      >
         <img
           src={project.cover}
-          alt={project.title}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          alt=""
+          width="1600"
+          height="1132"
+          decoding="async"
+          className="h-full w-full object-contain brightness-[0.92] saturate-[0.95] transition-transform duration-700 group-hover:scale-[1.01]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-base/80 via-base/20 to-transparent" />
+      </Link>
 
-        {/* Featured badge */}
-        <div className="absolute top-5 left-5 font-inter text-[10px] tracking-[0.15em] text-amber uppercase border border-amber/40 bg-base/60 backdrop-blur-sm rounded-full px-3 py-1">
-          Featured
-        </div>
-
-        {/* Title overlay on image */}
-        <div className="absolute bottom-6 left-6 right-6">
-          <p className="font-inter text-xs text-amber tracking-widest uppercase mb-2">
-            {project.client} · {project.year}
-          </p>
-          <h2 className="font-playfair text-3xl md:text-4xl text-snow font-bold leading-tight group-hover:text-amber transition-colors duration-300">
+      <div className="flex items-center px-0 py-10 lg:px-10 lg:py-16">
+        <div>
+          <EditorialMeta>
+            Featured publication · {project.client} · {project.year}
+          </EditorialMeta>
+          <h2 className="mt-4 font-playfair text-4xl font-bold leading-[1.03] text-snow sm:text-5xl">
             {project.title}
           </h2>
+          <EditorialRule className="my-6" />
+          <p className="font-inter text-sm leading-7 text-muted">
+            {project.summary}
+          </p>
+          <EditorialAction to={`/projects/${project.slug}`} className="mt-8">
+            View case study
+          </EditorialAction>
         </div>
       </div>
-
-      {/* Summary + CTA below image */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 px-1">
-        <p className="font-inter text-sm text-muted leading-relaxed max-w-xl">
-          {project.summary}
-        </p>
-        <div className="flex-shrink-0 inline-flex items-center gap-2 font-inter text-xs font-medium text-amber border border-border rounded-full px-4 py-2 group-hover:border-amber/50 transition-all duration-300 whitespace-nowrap">
-          <span>View case study</span>
-          <span className="group-hover:translate-x-0.5 transition-transform duration-300">→</span>
-        </div>
-      </div>
-    </Link>
-  )
+    </article>
+  );
 }
 
-function ProjectCard({ project }) {
+function StandardProject({ project, reverse }) {
   return (
-    <Link
-      to={`/projects/${project.slug}`}
-      className="group block bg-white/[0.04] backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:border-amber/30 hover:bg-white/[0.07] transition-all duration-500 shadow-[0_4px_24px_rgba(0,0,0,0.3)]"
-    >
-      <div className="aspect-[4/3] overflow-hidden">
+    <article className="grid border-b border-white/15 py-12 lg:grid-cols-2 lg:py-16">
+      <Link
+        to={`/projects/${project.slug}`}
+        aria-label={`View ${project.title}`}
+        className={`group block aspect-[16/11] overflow-hidden bg-surface ${
+          reverse ? "lg:order-2" : ""
+        }`}
+      >
         <img
           src={project.cover}
-          alt={project.title}
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+          alt=""
+          width="840"
+          height="1191"
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-contain brightness-[0.92] saturate-[0.95] transition-transform duration-700 group-hover:scale-[1.01]"
         />
-      </div>
-      <div className="p-5 border-t border-white/5">
-        <p className="font-inter text-[10px] text-amber tracking-widest uppercase mb-1.5">
-          {project.client} · {project.year}
-        </p>
-        <h3 className="font-playfair text-lg text-snow font-bold mb-2 leading-snug group-hover:text-amber transition-colors duration-300">
-          {project.title}
-        </h3>
-        <p className="font-inter text-xs text-muted leading-relaxed mb-5">
-          {project.summary}
-        </p>
-        <div className="inline-flex items-center gap-1.5 font-inter text-xs font-medium text-amber border border-border rounded-full px-3.5 py-1.5 group-hover:border-amber/50 transition-all duration-300">
-          <span>View case study</span>
-          <span className="group-hover:translate-x-0.5 transition-transform duration-300">→</span>
+      </Link>
+
+      <div
+        className={`flex items-center py-9 lg:py-10 ${
+          reverse ? "lg:order-1 lg:pr-12" : "lg:pl-12"
+        }`}
+      >
+        <div>
+          <EditorialMeta>
+            {project.client} · {project.year}
+          </EditorialMeta>
+          <h2 className="mt-3 font-playfair text-3xl font-bold leading-tight text-snow sm:text-4xl">
+            {project.title}
+          </h2>
+          <EditorialRule className="my-6" />
+          <p className="max-w-xl font-inter text-sm leading-7 text-muted">
+            {project.summary}
+          </p>
+          <EditorialAction to={`/projects/${project.slug}`} className="mt-8">
+            View case study
+          </EditorialAction>
         </div>
       </div>
-    </Link>
-  )
+    </article>
+  );
 }
 
 export default function Design() {
+  const [featured, ...moreProjects] = designProjects;
+
   return (
     <PortfolioLayout
       title="Graphic Design"
-      description="Brand identity, campaign visuals and print design across NGO, corporate and creative sectors."
+      description="Editorial systems and practical publications designed to make complex programme information clearer and more useful."
     >
-      <FeaturedCard project={featured} />
+      <FeaturedProject project={featured} />
 
-      {/* Divider */}
-      <div className="flex items-center gap-4 mb-10">
-        <div className="h-px flex-grow bg-border" />
-        <p className="font-inter text-[10px] text-faint tracking-[0.2em] uppercase">More work</p>
-        <div className="h-px flex-grow bg-border" />
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project, i) => (
-          <ProjectCard key={i} project={project} />
-        ))}
-      </div>
+      {moreProjects.length > 0 && (
+        <section className="mt-16" aria-labelledby="more-design-work">
+          <EditorialMeta id="more-design-work">More work</EditorialMeta>
+          <div className="mt-6 border-t border-white/15">
+            {moreProjects.map((project, index) => (
+              <StandardProject
+                key={project.slug}
+                project={project}
+                reverse={index % 2 !== 0}
+              />
+            ))}
+          </div>
+        </section>
+      )}
     </PortfolioLayout>
-  )
+  );
 }

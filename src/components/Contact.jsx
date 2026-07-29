@@ -1,99 +1,88 @@
 import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { PrimaryAction } from "./Editorial";
 
 export default function Contact() {
   return (
-    <footer id="contact" className="bg-surface border-t border-amber/20">
-
-      {/* ── Main CTA band ── */}
-      <div className="px-6 lg:px-20 py-20 max-w-6xl mx-auto text-center">
-
-        <h2 className="text-4xl md:text-4xl text-snow font-handwritten leading-tight mb-6 max-w-3xl mx-auto">
-          Stories told with purpose. <br className="hidden md:block" />
-          <span className="italic text-amber ">Designed to connect</span>
-        </h2>
-
-        <p className="font-inter text-sm text-muted leading-relaxed max-w-md mx-auto mb-10">
-          Available for freelance projects and full-time opportunities across
-          East Africa and beyond. Let's create something that resonates.
+    <footer id="contact" className="scroll-mt-24 border-t border-white/15 bg-charcoal">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 sm:py-24 md:grid-cols-[32%_68%] lg:px-20">
+        <p className="font-inter text-[11px] font-medium uppercase tracking-[0.18em] text-amber">
+          Available for work
         </p>
 
-        {/* Primary CTA */}
-        <a
-          href="mailto:joseph@pjslense.co.ke"
-          className="inline-block font-inter text-sm font-medium px-6 py-3 rounded-2xl ring-1 ring-white/10 bg-amber hover:bg-amber-light transition-all duration-300"
-          style={{ color: '#1C1B1A' }}
-        >
-          Let's work together
-        </a>
-
+        <div>
+          <h2 className="max-w-4xl font-playfair text-5xl font-bold leading-[1.02] text-snow sm:text-6xl lg:text-7xl">
+            Let&apos;s make the next story clear, human and memorable.
+          </h2>
+          <p className="mt-6 max-w-xl font-inter text-sm leading-7 text-muted sm:text-base">
+            Available for freelance projects and full-time opportunities across
+            East Africa and beyond.
+          </p>
+          <PrimaryAction href="mailto:joseph@pjslense.co.ke" className="mt-8">
+            Start a conversation
+          </PrimaryAction>
+        </div>
       </div>
 
-      {/* ── Bottom bar ── */}
-      <div className="border-t border-border px-6 lg:px-20 py-8">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-
-          {/* Left: logo + tagline */}
-          <div className="text-center md:text-left">
+      <div className="border-t border-white/15 px-6 py-8 lg:px-20">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
             <img
-              src="/pjslense logo.png"
+              src="/pjslense-logo.png"
               alt="PJ's Lense"
-              className={`h-14 w-auto transition-all duration-500 hover:opacity-80 
-              }`}
+              width="107"
+              height="60"
+              loading="lazy"
+              decoding="async"
+              className="h-12 w-auto"
             />
-            <p className="font-inter text-xs text-faint mt-1 tracking-wide">
+            <p className="mt-2 font-inter text-xs uppercase tracking-[0.12em] text-muted">
               Nairobi · Kenya
             </p>
           </div>
 
-          {/* Center: contact details */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 font-inter text-xs lg:-translate-x-10">
+          <address className="flex flex-col gap-3 font-inter text-sm not-italic sm:flex-row sm:gap-7">
             <a
               href="mailto:joseph@pjslense.co.ke"
-              className="text-muted hover:text-amber transition-colors duration-300"
+              className="inline-flex min-h-11 items-center border-b border-white/15 text-muted transition-colors hover:border-amber hover:text-amber"
             >
               joseph@pjslense.co.ke
             </a>
-            <div className="h-5 w-px bg-amber" />
             <a
               href="tel:+254729067166"
-              className="text-muted hover:text-amber transition-colors duration-300"
+              className="inline-flex min-h-11 items-center border-b border-white/15 text-muted transition-colors hover:border-amber hover:text-amber"
             >
               +254 729 067 166
             </a>
-          </div>
+          </address>
 
-          {/* Right: social links */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-6">
             <a
               href="https://www.linkedin.com/in/joseph-limo"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="text-muted hover:text-amber transition-colors duration-300"
+              aria-label="Joseph Limo on LinkedIn"
+              className="inline-flex min-h-11 items-center gap-2 text-sm text-muted transition-colors hover:text-amber"
             >
-              <FaLinkedin size={18} />
+              <FaLinkedin size={17} aria-hidden="true" />
+              LinkedIn
             </a>
             <a
               href="https://wa.me/254729067166"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="text-muted hover:text-amber transition-colors duration-300"
+              aria-label="Message Joseph Limo on WhatsApp"
+              className="inline-flex min-h-11 items-center gap-2 text-sm text-muted transition-colors hover:text-amber"
             >
-              <FaWhatsapp size={18} />
+              <FaWhatsapp size={17} aria-hidden="true" />
+              WhatsApp
             </a>
           </div>
-
         </div>
 
-        {/* Copyright */}
-        <div className="max-w-6xl mx-auto mt-6 pt-6 border-t border-border text-center">
-          <p className="font-inter text-xs tracking-[0.15em] uppercase text-faint">
-            © {new Date().getFullYear()} PJ's Lense · Crafted with intention.
-          </p>
-        </div>
-
+        <p className="mx-auto mt-8 max-w-7xl border-t border-white/15 pt-6 text-center font-inter text-[11px] uppercase tracking-[0.15em] text-muted md:text-left">
+          © {new Date().getFullYear()} PJ&apos;s Lense · Crafted with intention.
+        </p>
       </div>
     </footer>
-  )
+  );
 }
