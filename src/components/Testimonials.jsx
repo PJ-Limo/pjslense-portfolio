@@ -137,11 +137,6 @@ export default function Testimonials() {
       </div>
 
       <div className="relative max-w-5xl mx-auto">
-        {/* ── Top row: intro left, selectors right ──
-          This keeps the header and navigation on one line
-          so they don't eat vertical space above the card.
-          On mobile they stack naturally via flex-col.
-        */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
           {/* Intro text */}
           <div>
@@ -204,12 +199,6 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* ── Full width quote card ──
-          No fixed height — card grows naturally with the content.
-          max-w-5xl on the parent constrains the overall width
-          so very long quotes don't stretch uncomfortably wide.
-          transition-opacity handles the crossfade between quotes.
-        */}
         <div
           className={`relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-8 md:p-12 transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}
         >

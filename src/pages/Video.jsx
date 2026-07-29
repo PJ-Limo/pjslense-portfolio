@@ -36,7 +36,7 @@ const projects = [
   {
     title: 'Social Media Reels',
     client: 'Various Clients',
-    year: '2021–2024',
+    year: '2021',
     summary: 'Short-form video content for Instagram and LinkedIn — motion graphics, talking heads and campaign edits.',
     cover: '/pj.png',
     link: 'https://youtube.com',
