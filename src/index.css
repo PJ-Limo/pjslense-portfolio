@@ -1,69 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Nothing+You+Could+Do&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ── Base styles ── */
-body {
-  @apply font-inter bg-charcoal text-snow;
+:root {
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-html,
 body {
+  min-width: 320px;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  overflow-x: hidden;
+  @apply bg-charcoal font-inter text-snow antialiased;
 }
 
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-70%);
-  }
+img {
+  display: block;
+  max-width: 100%;
 }
 
-.animate-scroll {
-  animation: scroll 20s linear infinite;
-  display: flex;
-  white-space: nowrap;
-  width: 100%;
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid #ffbf00;
+  outline-offset: 3px;
 }
 
-.scroll-wrapper:hover .animate-scroll {
-  animation-play-state: paused;
-}
-
-.animate-marquee {
-  animation: marquee 20s linear infinite;
-}
-
-/* ── Partners logo scroll ── */
 @keyframes logoScroll {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
 
 .animate-scroll-logos {
-  animation: logoScroll 40s linear infinite;
   display: flex;
-  white-space: nowrap;
   width: max-content;
+  white-space: nowrap;
+  animation: logoScroll 40s linear infinite;
 }
 
-.scroll-wrapper:hover .animate-scroll-logos {
+.scroll-wrapper:hover .animate-scroll-logos,
+.scroll-wrapper:focus-within .animate-scroll-logos {
   animation-play-state: paused;
 }
 
@@ -73,4 +62,23 @@ body {
 
 .scrollbar-hide {
   scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-scroll-logos {
+    animation: none;
+  }
 }

@@ -1,49 +1,4 @@
-import { useState, useEffect } from "react";
-
-const colors = [
-  {
-    bg: "bg-amber/20",
-    dot: "bg-amber/60",
-    text: "text-amber",
-    border: "border-amber/30",
-  },
-  {
-    bg: "bg-blue-500/20",
-    dot: "bg-blue-500/60",
-    text: "text-blue-300",
-    border: "border-blue-400/30",
-  },
-  {
-    bg: "bg-rose-500/20",
-    dot: "bg-rose-500/60",
-    text: "text-rose-300",
-    border: "border-rose-400/30",
-  },
-  {
-    bg: "bg-emerald-500/20",
-    dot: "bg-emerald-500/60",
-    text: "text-emerald-300",
-    border: "border-emerald-400/30",
-  },
-  {
-    bg: "bg-violet-500/20",
-    dot: "bg-violet-500/60",
-    text: "text-violet-300",
-    border: "border-violet-400/30",
-  },
-  {
-    bg: "bg-orange-500/20",
-    dot: "bg-orange-500/60",
-    text: "text-orange-300",
-    border: "border-orange-400/30",
-  },
-  {
-    bg: "bg-teal-500/20",
-    dot: "bg-teal-500/60",
-    text: "text-teal-300",
-    border: "border-teal-400/30",
-  },
-];
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -81,157 +36,82 @@ const testimonials = [
     title: "Chief of Coaching",
     company: "Inuka Africa",
   },
-  {
-    quote:
-      "Every project felt collaborative from beginning to end. His ability to understand our audience elevated the final outcome enormously.",
-    name: "Grace Njeri",
-    title: "Head of Communications",
-    company: "World Vision",
-  },
-  {
-    quote:
-      "Joseph consistently delivers work that feels intentional, thoughtful and beautifully executed.",
-    name: "Paul Kimani",
-    title: "Creative Director",
-    company: "Studio North",
-  },
 ];
-
-const initials = (name) =>
-  name
-    .split(" ")
-    .map((w) => w[0])
-    .join("");
 
 export default function Testimonials() {
   const [active, setActive] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const timer = setInterval(
-      () => transition((active + 1) % testimonials.length),
-      7000,
-    );
-    return () => clearInterval(timer);
-  }, [active]);
-
-  function transition(i) {
-    setVisible(false);
-    setTimeout(() => {
-      setActive(i);
-      setVisible(true);
-    }, 300);
-  }
-
-  const t = testimonials[active];
-  const c = colors[active % colors.length];
+  const testimonial = testimonials[active];
 
   return (
     <section
       id="testimonials"
-      className="relative bg-charcoal px-6 lg:px-20 py-16 overflow-hidden"
+      aria-labelledby="testimonials-heading"
+      className="border-t border-white/15 bg-charcoal px-6 py-20 sm:py-24 lg:px-20"
     >
-      {/* Ambient glow */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-        <div className="w-[600px] h-[600px] rounded-full bg-amber/5 blur-[120px]" />
-      </div>
-
-      <div className="relative max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
-          {/* Intro text */}
-          <div>
-            <p className="font-inter text-xs font-medium tracking-[0.2em] text-amber uppercase mb-3">
-              Voices
-            </p>
-            <h2 className="font-playfair text-4xl md:text-5xl text-snow font-bold mb-3">
-              In their words
-            </h2>
-            <p className="font-inter text-sm text-muted leading-relaxed max-w-sm">
-              Perspectives from clients, collaborators and partners I've had the
-              privilege to work alongside.
-            </p>
-          </div>
-
-          {/* Selectors — aligned to bottom of intro text on desktop */}
-          <div className="flex-shrink-0">
-            {/* Desktop: pill buttons */}
-            <div className="hidden sm:flex items-center gap-2 flex-wrap justify-end">
-              {testimonials.map((item, i) => {
-                const col = colors[i % colors.length];
-                const isActive = i === active;
-                const cls = isActive
-                  ? `flex items-center gap-2 px-3 py-2 rounded-full border transition-all duration-300 ${col.bg} ${col.border}`
-                  : "flex items-center gap-2 px-3 py-2 rounded-full border border-border bg-transparent opacity-40 hover:opacity-70 transition-all duration-300";
-                return (
-                  <button key={i} onClick={() => transition(i)} className={cls}>
-                    <span
-                      className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold ${col.bg} ${col.text}`}
-                    >
-                      {initials(item.name)}
-                    </span>
-                    {isActive && (
-                      <span className={`font-inter text-xs ${col.text} pr-1`}>
-                        {item.name.split(" ")[0]}
-                      </span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Mobile: dot indicators */}
-            <div className="flex sm:hidden items-center gap-2">
-              {testimonials.map((_, i) => {
-                const col = colors[i % colors.length];
-                const cls =
-                  i === active
-                    ? `h-2 w-6 rounded-full transition-all duration-300 ${col.dot}`
-                    : "h-2 w-2 rounded-full transition-all duration-300 bg-border";
-                return (
-                  <button
-                    key={i}
-                    onClick={() => transition(i)}
-                    className={cls}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
-
-        <div
-          className={`relative rounded-3xl border border-white/10 bg-white/5 backdrop-blur-2xl p-8 md:p-12 transition-opacity duration-300 ${visible ? "opacity-100" : "opacity-0"}`}
-        >
-          {/* Decorative quotation mark */}
-          <div className="absolute top-4 right-8 font-playfair text-[120px] leading-none text-amber/10 select-none">
-            "
-          </div>
-
-          {/* Quote — grows as tall as needed */}
-          <p className="font-playfair text-lg md:text-xl text-snow leading-relaxed relative z-10 mb-10">
-            "{t.quote}"
+      
+      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[32%_68%] lg:gap-16">
+        <header>
+          <p className="font-inter text-[11px] font-medium uppercase tracking-[0.18em] text-amber">
+            Client perspective
           </p>
+          <h2
+            id="testimonials-heading"
+            className="mt-4 font-playfair text-5xl font-bold leading-none text-snow sm:text-6xl"
+          >
+            In their words
+          </h2>
+          <p className="mt-5 max-w-sm font-inter text-sm leading-7 text-muted">
+            Reflections from clients and collaborators across documentary,
+            design and communications work.
+          </p>
+        </header>
 
-          {/* Attribution */}
-          <div className="flex items-center gap-4 border-t border-white/5 pt-8">
-            <div
-              className={`w-12 h-12 rounded-full border flex items-center justify-center flex-shrink-0 ${c.bg} ${c.border}`}
-            >
-              <span className={`font-inter text-sm font-semibold ${c.text}`}>
-                {initials(t.name)}
-              </span>
-            </div>
-            <div>
-              <div className="w-6 h-px bg-amber mb-2" />
-              <h3 className="font-playfair text-base text-snow">
-                {t.name}
-              </h3>
-              <p className="font-inter text-xs text-muted mt-1">
-                {t.title}
-                {t.company ? ` · ${t.company}` : ""}
-              </p>
-            </div>
+        <div className="min-w-0">
+          <div
+            className="scrollbar-hide flex max-w-full gap-6 overflow-x-auto border-b border-white/15"
+            role="group"
+            aria-label="Choose a testimonial"
+          >
+            {testimonials.map((item, index) => {
+              const isActive = index === active;
+
+              return (
+                <button
+                  key={item.name}
+                  type="button"
+                  onClick={() => setActive(index)}
+                  aria-label={`Show testimonial from ${item.name}`}
+                  aria-pressed={isActive}
+                  className={`min-h-11 flex-shrink-0 border-b-2 px-0.5 pb-3 font-inter text-xs transition-colors ${
+                    isActive
+                      ? "border-amber text-amber"
+                      : "border-transparent text-muted hover:text-snow"
+                  }`}
+                >
+                  {String(index + 1).padStart(2, "0")} · {item.name.split(" ")[0]}
+                </button>
+              );
+            })}
           </div>
+
+          <blockquote
+            className="py-10 sm:py-12"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <p className="font-playfair text-xl leading-relaxed text-snow sm:text-2xl lg:text-[1.7rem]">
+              “{testimonial.quote}”
+            </p>
+            <footer className="mt-9 border-t border-white/15 pt-6">
+              <p className="font-playfair text-lg text-snow">
+                {testimonial.name}
+              </p>
+              <p className="mt-1 font-inter text-xs uppercase tracking-[0.12em] text-muted">
+                {testimonial.title}
+                {testimonial.company ? ` · ${testimonial.company}` : ""}
+              </p>
+            </footer>
+          </blockquote>
         </div>
       </div>
     </section>

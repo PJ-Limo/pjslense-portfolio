@@ -1,17 +1,28 @@
-<<<<<<< HEAD
-# React + Vite
+# PJ's Lense portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The portfolio of Joseph Limo, a Nairobi-based communications and multimedia
+specialist. The site presents selected photography, graphic design,
+documentary film and visual storytelling work.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Requires Node.js 20.19+ or 22.12+.
 
-## Expanding the ESLint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# pjslense-portfolio
-my personal portfolio project as I learn to code. 
->>>>>>> 8a0cb5af6b41ca0cb12a4a427cfef09e98b253be
+Vite will print the local URL, normally `http://localhost:5173`.
+
+## Quality checks
+
+```bash
+npm run lint
+npm test
+npm run build
+```
+
+Production-ready public assets live in `static/`. The original high-resolution
+source files remain in `public/`, but Vite is configured not to include that
+source directory in production builds.

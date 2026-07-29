@@ -1,48 +1,44 @@
 import { Link } from "react-router-dom";
+import { EditorialAction, EditorialMeta } from "./Editorial";
 
 export default function PortfolioCard({
   title,
   description,
   image,
   link,
-  className,
+  index,
+  className = "",
 }) {
   return (
-    <Link
-      to={link}
-      onClick={() =>
-        window.scrollTo({
-          top: 0,
-          behavior: "instant",
-        })
-      }
-      className={`
-        group relative h-full overflow-hidden rounded-lg shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
-        ${className}
-      `}
-    >
-      {/* Background Image */}
-      <img
-        src={image}
-        alt={title}
-        className=" absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 "
-      />
-      {/* Bottom gradient */}
-      <div className=" absolute inset-0 bg-gradient-to-t from-charcoal from-[8%] via-base/70 via-20% to-transparent to-[38%] " />
+    <article className={`group flex h-full flex-col py-10 ${className}`}>
+      <Link
+        to={link}
+        aria-label={`Explore ${title}`}
+        className="relative block aspect-[16/10] overflow-hidden bg-surface"
+      >
+        <img
+          src={image}
+          alt=""
+          width="1400"
+          height="933"
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-cover object-center brightness-[0.9] saturate-[0.95] transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+        />
+      </Link>
 
-      {/* Amber Accent Line */}
-      <div className=" absolute bottom-0 left-0 h-1 w-0 bg-amber transition-all duration-500 group-hover:w-full z-20 " />
-
-      {/* Text */}
-      <div className=" absolute bottom-0 left-0 right-0 z-10 px-6 pb-6 ">
-        <h3 className="font-playfair text-3xl text-snow leading-tight drop-shadow-md">
+      <div className="flex flex-1 flex-col pt-6">
+        <EditorialMeta>{String(index).padStart(2, "0")} / 04</EditorialMeta>
+        <h3 className="mt-3 font-playfair text-3xl font-bold leading-tight text-snow sm:text-4xl">
           {title}
         </h3>
-
-        <p className="mt-2 text-sm text-snow/90 drop-shadow-sm">
+        <p className="mt-3 max-w-md font-inter text-sm leading-7 text-muted">
           {description}
         </p>
+        <EditorialAction to={link} className="mt-7 self-start">
+          Explore the work
+        </EditorialAction>
       </div>
-    </Link>
+    </article>
   );
 }
