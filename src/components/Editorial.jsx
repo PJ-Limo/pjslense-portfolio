@@ -71,7 +71,7 @@ export function EditorialAction({
 }
 
 export function PrimaryAction({ children, href, to, className = "" }) {
-  const sharedClassName = `inline-flex min-h-11 items-center justify-center rounded-sm bg-amber px-5 py-3 font-inter text-sm font-semibold text-charcoal transition-colors hover:bg-amber-light ${className}`;
+  const sharedClassName = `inline-flex min-h-11 items-center justify-center rounded-lg bg-amber px-5 py-3 font-inter text-sm font-semibold text-charcoal transition-colors hover:bg-amber-light ${className}`;
 
   if (to) {
     return (

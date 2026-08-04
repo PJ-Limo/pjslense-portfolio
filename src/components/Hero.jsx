@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PrimaryAction } from "./Editorial";
 
 const stats = [
-  { value: "7+", label: "Years of experience" },
+  { value: "10+", label: "Years of experience" },
   { value: "30+", label: "Clients served" },
   { value: "4", label: "Creative disciplines" },
   { value: "10+", label: "Countries reached" },
@@ -24,25 +24,25 @@ export default function Hero() {
             <span className="italic text-amber">Limo.</span>
           </h1>
 
-          <p className="mt-5 font-inter text-sm tracking-wide text-muted">
+          <p className="mt-5 font-inter text-sm tracking-wider text-muted">
             Communications &amp; Multimedia Specialist
           </p>
 
-          <div className="my-8 h-px w-16 bg-amber" aria-hidden="true" />
+          <div className="my-4 mb-10 h-px w-24 bg-amber" aria-hidden="true" />
 
           <h2 className="max-w-2xl font-playfair text-2xl font-bold leading-snug text-snow sm:text-3xl">
             Visual communication for organisations.
           </h2>
 
           <p className="mt-5 max-w-xl font-inter text-sm leading-relaxed text-muted">
-            I&apos;m Joseph Limo, a communications and multimedia specialist
+            I&apos;m a communications and multimedia specialist
             creating documentary photography, films and editorial design for
             organisations communicating social and environmental impact.
           </p>
 
           <p className="mt-4 max-w-xl font-inter text-sm leading-relaxed text-muted">
-            Across more than seven years, I have worked from community settings
-            to conference floors—building clear, respectful narratives around
+            Across more than ten years, I have worked from community settings
+            to conference floors - building clear, respectful narratives around
             people, programmes and place.
           </p>
 
@@ -52,7 +52,7 @@ export default function Hero() {
             </PrimaryAction>
             <Link
               to="/portfolio/photography"
-              className="inline-flex min-h-11 rounded-lg items-center border-b border-amber pb-1 text-sm font-semibold text-amber transition-colors hover:text-amber-light"
+              className="inline-flex min-h-11 rounded-lg items-center border-b border-amber pb-1 text-sm font-semibold text-amber-light transition-colors hover:text-amber-light"
             >
               Explore the portfolio
             </Link>
