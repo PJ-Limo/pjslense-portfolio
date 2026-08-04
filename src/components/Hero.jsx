@@ -79,7 +79,7 @@ export default function Hero() {
 
         <div className="relative hidden w-[42%] -scale-x-100 self-end md:block md:h-[calc(100vh-5rem)]">
           <img
-            src="/public/pj.png"
+            src="/pj.png"
             alt="Joseph Limo"
             width="900"
             height="1200"
