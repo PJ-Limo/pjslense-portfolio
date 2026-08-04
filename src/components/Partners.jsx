@@ -17,7 +17,7 @@ export default function Partners() {
     <section
       id="partners"
       aria-labelledby="partners-title"
-      className="w-full scroll-mt-24 overflow-hidden bg-charcoal py-16 sm:py-20"
+      className="w-full scroll-mt-24 overflow-hidden bg-charcoal py-4 sm:py-10"
     >
       {/* Header row */}
       <div className="px-6 md:px-20 flex items-center gap-6 mb-10">

@@ -7,14 +7,15 @@ export default function PortfolioCard({
   image,
   link,
   index,
+  compact = false,
   className = "",
 }) {
   return (
-    <article className={`group flex h-full flex-col py-10 ${className}`}>
+    <article className={`group flex flex-col ${className}`}>
       <Link
         to={link}
         aria-label={`Explore ${title}`}
-        className="relative block aspect-[16/10] overflow-hidden bg-surface"
+        className="relative block aspect-[5/4] overflow-hidden rounded-xl bg-surface"
       >
         <img
           src={image}
@@ -27,17 +28,26 @@ export default function PortfolioCard({
         />
       </Link>
 
-      <div className="flex flex-1 flex-col pt-6">
+      <div className="flex flex-col pt-4">
         <EditorialMeta>{String(index).padStart(2, "0")} / 04</EditorialMeta>
-        <h3 className="mt-3 font-playfair text-3xl font-bold leading-tight text-snow sm:text-4xl">
+        <h3
+          className={`mt-2 font-playfair font-bold leading-tight text-snow ${
+            compact ? "text-lg" : "text-3xl"
+          }`}
+        >
           {title}
         </h3>
-        <p className="mt-3 max-w-md font-inter text-sm leading-7 text-muted">
-          {description}
-        </p>
-        <EditorialAction to={link} className="mt-7 self-start">
-          Explore the work
-        </EditorialAction>
+
+        {!compact && (
+          <>
+            <p className="mt-2 max-w-md font-inter text-sm leading-6 text-muted">
+              {description}
+            </p>
+            <EditorialAction to={link} className="mt-4 self-start">
+              Explore the work
+            </EditorialAction>
+          </>
+        )}
       </div>
     </article>
   );
